@@ -4,7 +4,7 @@ To connect DBeaver (running on Windows) to a PostgreSQL database running inside 
 
 
 
-### **Step 1: Find the WSL2 IP Address**
+### Step 1: Find the WSL2 IP Address
 
 1. Open your WSL2 terminal.
 2. Run the following command to get the IP address of your WSL2 instance:
@@ -19,7 +19,7 @@ To connect DBeaver (running on Windows) to a PostgreSQL database running inside 
 
 
 
-### **Step 2: Configure PostgreSQL in WSL2 to Accept External Connections**
+### Step 2: Configure PostgreSQL in WSL2 to Accept External Connections
 
 1. Edit the PostgreSQL configuration file (typically in `/etc/postgresql/14/main/postgresql.conf`, version may vary):
 
@@ -62,19 +62,24 @@ To connect DBeaver (running on Windows) to a PostgreSQL database running inside 
 
    ```conf
    local    all             postgres                          trust
+   local    all             all                               trust
    ```
 
 
 
-### **Step 3: Restart PostgreSQL in WSL2**
+### Step 3: Restart and create database
 
 ```bash
-sudo service postgresql restart
+$ sudo service postgresql restart
+$ psql -U postgres
 ```
 
+```psql
+postgres-# create database geospatial
+postgres-# \q
+```
 
-
-### **Step 4: Allow Windows to Connect**
+### Step 4: Allow Windows to Connect
 
 Windows firewall may block the connection. Either:
 
@@ -91,7 +96,7 @@ Replace `<WSL_IP>` with the one you found earlier.
 
 
 
-### **Step 5: Connect in DBeaver**
+### Step 5: Connect in DBeaver
 
 1. Open DBeaver.
 2. Create a new PostgreSQL connection.
@@ -107,4 +112,5 @@ Click **Test Connection** and connect.
 
 ## Notes
 
-https://community.qlik.com/t5/Connectivity-Data-Prep/PostgreSQL-Password-forgot/td-p/2160246
+[PostgreSQL reset password](https://community.qlik.com/t5/Connectivity-Data-Prep/PostgreSQL-Password-forgot/td-p/2160246)
+[PostgreSQL uninstall](https://neon.tech/postgresql/postgresql-administration/uninstall-postgresql-ubuntu#step-5-verify-uninstallation)
