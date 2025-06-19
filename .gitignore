@@ -57,4 +57,4 @@ __pycache__
 
 # Project Specifics #
 ######################
-geospatial_data_analytics/*.csv
+ll_geospatial_data_analytics/*.csv

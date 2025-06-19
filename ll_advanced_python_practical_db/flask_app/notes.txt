@@ -1,0 +1,10 @@
+create database project_tracker;
+
+\c project_tracker;
+
+\dt;
+
+
+>>> import os
+>>> os.urandom(24)
+b"5'\\\x06s\xe7\xa2\xc8\xacFVh\xd7z%\xac\xca\xe6!b\xcd\xd1\xbd\x9b"
